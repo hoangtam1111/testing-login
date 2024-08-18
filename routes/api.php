@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\GoogleController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -30,4 +31,6 @@ Route::group([
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::post('/get-google-sign-in-url', [GoogleController::class, 'getGoogleSignInUrl']);
+Route::get('/callback', [GoogleController::class, 'loginCallback']);
 
